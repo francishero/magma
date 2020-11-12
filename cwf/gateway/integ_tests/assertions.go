@@ -140,7 +140,6 @@ func (tr *TestRunner) assertAllExpectationsMetNoError(resByIdx []*protos.Expecta
 }
 
 func (tr *TestRunner) AssertPolicyUsage(imsi, rule string, minBytes, maxBytes uint64) {
-	// Check that UE mac flow was not removed and no extra data hit gx rules
 	recordsBySubID, err := tr.GetPolicyUsage()
 	assert.NoError(tr.t, err)
 	assert.NotNil(tr.t, recordsBySubID[prependIMSIPrefix(imsi)], fmt.Sprintf("Policy usage record for %s not found", imsi))
