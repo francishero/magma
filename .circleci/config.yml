@@ -6,13 +6,16 @@ aliases:
   - &only_master
     filters:
       branches:
-        only: master
+        only:
+          - master
+          - run-cwf-integtest
   - &master_and_develop
     filters:
       branches:
         only:
           - master
           - develop
+          - run-cwf-integtest
   - &lte_build_verify
     paths: "orc8r lte"
   - &federated_build_verify
@@ -73,6 +76,7 @@ orbs:
                   fi
                 done
                 echo "No changes in [$paths]"
+                exit 0
                 circleci step halt
 
 commands:
